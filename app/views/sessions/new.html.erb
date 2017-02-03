@@ -1,0 +1,33 @@
+
+<div class="col-sm-6 col-md-4 col-md-offset-4">
+  <%= form_for :session, url: session_path, role: "form" do |form| %>
+
+    <h2>Sign In</h2>
+
+    <div class="form-group">
+      <div class="input-group">
+      		<span class="input-group-addon">
+      			<i class="glyphicon glyphicon-user"></i>
+      		</span>
+          <%= form.text_field :email, type: 'email', class: "form-control", placeholder: "Email Address" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+    	<div class="input-group">
+    		<span class="input-group-addon">
+    			<i class="glyphicon glyphicon-lock"></i>
+    		</span>
+    		<%= form.password_field :password, type: 'password', class: "form-control", placeholder: "Password" %>
+    	</div>
+    </div>
+
+
+    <div class="submit-field">
+      <%= form.submit :class => 'btn btn-lg btn-primary btn-block' %>
+    </div>
+
+  <% end %>
+
+  Don't have an account? <%= link_to "Sign Up", sign_up_path %>
+</div>
