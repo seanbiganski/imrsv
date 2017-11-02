@@ -1,2 +1,5 @@
 
 config/application.yml
+*.cache
+tmp/restart.txt
+log/development.log
