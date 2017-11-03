@@ -8,7 +8,6 @@ class FetchController < ApplicationController
 
     project = Project.find_by_token(token)
 
-    user = project.user
     ad = Ad.offset(rand(Ad.count)).first
 
     data = open("http:" + ad.file.url)

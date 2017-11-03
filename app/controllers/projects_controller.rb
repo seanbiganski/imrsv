@@ -1,21 +1,10 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-  before_filter :allow_only_admins_and_promoters
-
-  def allow_only_admins_and_promoters
-    unless current_user.admin? or current_user.promoter?
-      redirect_to root_path, :flash => { :error => "Sorry, you do not have permission to access that area." }
-    end
-  end
 
   # GET /projects
   # GET /projects.json
   def index
-    if current_user.admin?
       @projects = Project.all
-    elsif current_user.promoter?
-      @projects = current_user.projects
-    end
   end
 
   # GET /projects/1
@@ -36,7 +25,6 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
-    @project.user_id = current_user.id
     @project.token = SecureRandom.uuid
 
     respond_to do |format|
@@ -78,13 +66,9 @@ class ProjectsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       begin
-        if current_user.admin?
           @project = Project.find(params[:id])
-        else
-          @project = current_user.projects.find(params[:id])
-        end
       rescue
-        redirect_to ads_path, :flash => { :error => "Unable to find that ad" }
+        redirect_to projects_path, :flash => { :error => "Unable to find that project" }
       end
     end
 

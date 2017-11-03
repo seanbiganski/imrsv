@@ -13,7 +13,6 @@
           <th>Ad Impressions</th>
           <th>Name</th>
           <th>Token</th>
-          <th>User</th>
           <th></th>
           <th></th>
       </tr>
@@ -28,7 +27,6 @@
         <% end %>
         <td><%= link_to project.name, project %></td>
         <td><%= project.token %></td>
-        <td><%= project.user.email %></td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>

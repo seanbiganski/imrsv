@@ -49,18 +49,12 @@ GEM
     aws-sdk-resources (2.6.35)
       aws-sdk-core (= 2.6.35)
     aws-sigv4 (1.0.0)
-    bcrypt (3.1.11)
-    bcrypt (3.1.11-x86-mingw32)
     bootstrap-generators (3.3.4)
       railties (>= 3.1.0)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     builder (3.2.2)
     byebug (9.0.6)
-    clearance (1.15.1)
-      bcrypt
-      email_validator (~> 1.4)
-      rails (>= 3.1)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -74,8 +68,6 @@ GEM
     coffee-script-source (1.11.1)
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
-    email_validator (1.6.0)
-      activemodel
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.14)
@@ -199,11 +191,9 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   aws-sdk (~> 2.3)
-  bcrypt (= 3.1.11)
   bootstrap-generators (~> 3.3.4)
   bootstrap-sass (~> 3.2.0)
   byebug
-  clearance
   coffee-rails (~> 4.2)
   figaro
   hirb

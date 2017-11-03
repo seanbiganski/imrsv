@@ -1,21 +1,11 @@
 class AdsController < ApplicationController
   before_action :set_ad, only: [:show, :edit, :update, :destroy]
-  before_filter :allow_only_admins_and_advertisers
-
-  def allow_only_admins_and_advertisers
-    unless current_user.admin? or current_user.advertiser?
-      redirect_to root_path, :flash => { :error => "Sorry, you do not have permission to access that area." }
-    end
-  end
 
   # GET /ads
   # GET /ads.json
   def index
-    if current_user.admin?
       @ads = Ad.all
-    elsif current_user.advertiser?
-      @ads = current_user.ads
-    end
+
   end
 
   # GET /ads/1
@@ -36,7 +26,6 @@ class AdsController < ApplicationController
   # POST /ads.json
   def create
     @ad = Ad.new(ad_params)
-    @ad.user_id = current_user.id
 
     respond_to do |format|
       if @ad.save
@@ -77,11 +66,7 @@ class AdsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_ad
       begin
-        if current_user.admin?
           @ad = Ad.find(params[:id])
-        else
-          @ad = current_user.ads.find(params[:id])
-        end
       rescue
         redirect_to ads_path, :flash => { :error => "Unable to find that ad" }
       end
