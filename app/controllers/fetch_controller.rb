@@ -1,7 +1,5 @@
 class FetchController < ApplicationController
 
-  skip_before_filter :require_login
-
   def ad()
 
     token = params[:token]
